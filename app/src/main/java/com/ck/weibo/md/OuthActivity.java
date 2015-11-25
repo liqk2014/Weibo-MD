@@ -22,13 +22,13 @@ public class OuthActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_outh);
         ButterKnife.bind(this);
-
+        oauthPage.getSettings().setJavaScriptEnabled(true);
         oauthPage.setWebViewClient(new WebViewClient() {
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
 
-                Logger.getLogger().d("");
+                Logger.getLogger().d(url+"");
 
                 return true;
 
