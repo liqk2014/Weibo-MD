@@ -1,16 +1,20 @@
 package com.ck.weibo.md.ui.activity;
 
+import android.graphics.Bitmap;
 import android.net.UrlQuerySanitizer;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.ck.weibo.md.R;
 import com.ck.weibo.md.net.api.WeiboApi;
 import com.ck.weibo.md.net.http.okhttp.OkHttpUtil;
 import com.ck.weibo.md.utils.Logger;
+import com.rey.material.widget.ProgressView;
 import com.sk.android.lib.ui.BaseActivity;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.FormEncodingBuilder;
@@ -33,6 +37,11 @@ public class OuthActivity extends BaseActivity {
     @Bind(R.id.oauth_page)
     WebView oauthPage;
 
+
+    MaterialDialog loadDialog;
+    @Bind(R.id.material_progress_bar)
+    ProgressView materialProgressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +56,44 @@ public class OuthActivity extends BaseActivity {
         initToolBar(toolbar, toolbarTitle, getString(R.string.oauth_title));
 
         oauthPage.getSettings().setJavaScriptEnabled(true);
+
+
         oauthPage.setWebViewClient(new WebViewClient() {
+
+
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                super.onPageStarted(view, url, favicon);
+
+
+            }
+
+            @Override
+            public void onPageCommitVisible(WebView view, String url) {
+                super.onPageCommitVisible(view, url);
+                Logger.getLogger().d(url + "");
+
+
+                final String oauthURL = WeiboApi.OAUTH_URL;
+
+                Logger.getLogger().d(WeiboApi.OAUTH_URL);
+                Logger.getLogger().d(oauthURL);
+
+
+                if (url.trim().equals(oauthURL.trim())) {
+
+                    materialProgressBar.setVisibility(View.GONE);
+
+                }
+
+
+            }
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+
+
+            }
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -57,6 +103,7 @@ public class OuthActivity extends BaseActivity {
                 if (url.startsWith(WeiboApi.REDIRECT_URI)) {
                     Logger.getLogger().d(url + "");
 
+                    materialProgressBar.setVisibility(View.VISIBLE);
 
                     UrlQuerySanitizer sanitizer = new UrlQuerySanitizer(url);
                     sanitizer.setAllowUnregisteredParamaters(true);
@@ -79,7 +126,7 @@ public class OuthActivity extends BaseActivity {
                     RequestBody body = new FormEncodingBuilder()
                             .add("client_id", WeiboApi.APP_KEY)
                             .add("client_secret", WeiboApi.APP_SECRET)
-                            .add("grant_type","authorization_code")
+                            .add("grant_type", "authorization_code")
                             .add("code", code)
                             .add("redirect_uri", WeiboApi.REDIRECT_URI)
                             .build();
@@ -94,10 +141,23 @@ public class OuthActivity extends BaseActivity {
                         @Override
                         public void onResponse(Response response) throws IOException {
 
+                            Logger.getLogger().d(response.body().string() + "");
 
-                            Logger.getLogger().d(response.body().string()+"");
+
+                            OuthActivity.this.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    materialProgressBar.setVisibility(View.GONE);
+
+                                }
+                            });
+
                         }
                     });
+
+                } else {
+                    materialProgressBar.setVisibility(View.GONE);
+
 
                 }
 
@@ -107,9 +167,9 @@ public class OuthActivity extends BaseActivity {
             }
         });
         oauthPage.loadUrl(WeiboApi.OAUTH_URL);
-
-
+        materialProgressBar.setVisibility(View.VISIBLE);
     }
+
 
     @Override
     protected void initField() {

@@ -11,8 +11,9 @@ public class WeiboApi {
     public static final String REDIRECT_URI = "https://api.weibo.com/oauth2/default.html";
 
 
-    public static final String OAUTH_URL = "https:/api.weibo.com/oauth2/authorize?client_id="
+    public static final String OAUTH_URL = "https://api.weibo.com/oauth2/authorize?client_id="
             + APP_KEY + "&redirect_uri=" + REDIRECT_URI + "&response_type=code&display=default&state=authorize";
+
 
     public static final String ACCESS_TAKEN_URL = "https://api.weibo.com/oauth2/access_token";
 

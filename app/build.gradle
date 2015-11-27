@@ -24,6 +24,8 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile project(':androidlib')
     compile ('com.github.rey5137:material:1.2.1')
-
+    compile('com.github.afollestad.material-dialogs:core:0.8.5.1@aar') {
+        transitive = true
+    }
 
 }
