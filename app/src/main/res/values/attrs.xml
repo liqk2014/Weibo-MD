@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="DialChartView">
+        <attr name="outside_diameter" format="dimension" />
+        <attr name="inside_diameter" format="dimension" />
+
+    </declare-styleable>
+
+</resources>
