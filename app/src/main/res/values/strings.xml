@@ -1,5 +1,10 @@
 <resources>
-    <string name="app_name">Weibo-MD</string>
+    <string name="app_name">MD微博客户端</string>
+
+    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_outh">OuthActivity</string>
+
+    <string name="oauth_title">Oauth认证</string>
+
+
 </resources>

@@ -3,4 +3,24 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="card_margin">16dp</dimen>
+
+
+    <!-- Common -->
+    <dimen name="title_size">18sp</dimen>
+
+
+    <!-- MainActivity -->
+    <dimen name="main_activity_navigation_bar_height">48dp</dimen>
+
+
+    <!-- MainFragment -->
+    <dimen name="main_fragment_item_device_height">65dp</dimen>
+    <dimen name="main_fragment_item_device_button_width">65dp</dimen>
+    <dimen name="main_fragment_item_device_button_text_size">11sp</dimen>
+
+    <!-- DotFragment -->
+    <dimen name="dot_fragment_item_dot_height">48dp</dimen>
+
+
 </resources>

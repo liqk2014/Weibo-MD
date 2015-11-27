@@ -1,6 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#009688</color>
+    <color name="colorPrimaryDark">#00796B</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="common_gray_color">#ABABAB</color>
+
+
+
+    <!-- Common -->
+    <color name="title_color">#FFFFFF</color>
+
+
+
+    <!-- MainFragment -->
+    <color name="main_item_device_change_name">#AAAAAA</color>
+    <color name="main_item_device_change_network">#FF8B0E</color>
+    <color name="main_item_device_delete_device">#FF3014</color>
+    <color name="main_item_device_divider">#DCDCDC</color>
+    <color name="main_navigation_bar_background">#FAFAFA</color>
+    <color name="main_navigation_bar_line">#BDBFC9</color>
+
+
+    <!--DeviceControllerActivity-->
+    <color name="device_controller_activity_water_quality_excellent">#74ED3E</color>
+    <color name="device_controller_activity_water_quality_good">#A1ED3E</color>
+    <color name="device_controller_activity_water_quality_average">#CEED3E</color>
+    <color name="device_controller_activity_water_quality_bad">#ED9E3E</color>
+    <color name="device_controller_activity_title_color">#FFFFFF</color>
+    <color name="device_controller_activity_gray_text_color">#ABABAB</color>
+    <color name="device_controller_activity_background_color">#F0EFEF</color>
+
+
+    <!--LoginActivity-->
+    <color name="login_activity_edittext_color">#ADADAD</color>
+
+
+
+
+     <!--Zxing-ViewfinderView-->
+
+    <color name="result_view">#b0000000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="possible_result_points">#c0ffff00</color>
+
 </resources>
