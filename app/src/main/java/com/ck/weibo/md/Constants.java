@@ -5,4 +5,6 @@ package com.ck.weibo.md;
  */
 public final class Constants  {
 
+
+    public static String access_token;
 }

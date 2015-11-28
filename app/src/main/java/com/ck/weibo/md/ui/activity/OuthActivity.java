@@ -1,5 +1,6 @@
 package com.ck.weibo.md.ui.activity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.UrlQuerySanitizer;
 import android.os.Bundle;
@@ -10,10 +11,13 @@ import android.webkit.WebViewClient;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.ck.weibo.md.Constants;
 import com.ck.weibo.md.R;
+import com.ck.weibo.md.model.AccessTakenResponse;
 import com.ck.weibo.md.net.api.WeiboApi;
 import com.ck.weibo.md.net.http.okhttp.OkHttpUtil;
 import com.ck.weibo.md.utils.Logger;
+import com.google.gson.Gson;
 import com.rey.material.widget.ProgressView;
 import com.sk.android.lib.ui.BaseActivity;
 import com.squareup.okhttp.Callback;
@@ -141,7 +145,13 @@ public class OuthActivity extends BaseActivity {
                         @Override
                         public void onResponse(Response response) throws IOException {
 
-                            Logger.getLogger().d(response.body().string() + "");
+
+                            String accessTokenJson = response.body().string();
+
+                            Logger.getLogger().d(accessTokenJson + "");
+
+                            AccessTakenResponse accessTakenResponse = new Gson().fromJson(accessTokenJson, AccessTakenResponse.class);
+                            Constants.access_token = accessTakenResponse.getAccess_token();
 
 
                             OuthActivity.this.runOnUiThread(new Runnable() {
@@ -151,6 +161,10 @@ public class OuthActivity extends BaseActivity {
 
                                 }
                             });
+
+                            startActivity(new Intent(OuthActivity.this, PublicWeiboActivity.class));
+
+                            finish();
 
                         }
                     });
