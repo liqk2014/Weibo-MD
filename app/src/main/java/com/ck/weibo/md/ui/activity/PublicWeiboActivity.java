@@ -6,9 +6,11 @@ import android.support.v7.widget.Toolbar;
 
 import com.ck.weibo.md.Constants;
 import com.ck.weibo.md.R;
+import com.ck.weibo.md.model.WeiboModel;
 import com.ck.weibo.md.net.api.WeiboApi;
 import com.ck.weibo.md.net.http.okhttp.OkHttpUtil;
 import com.ck.weibo.md.utils.Logger;
+import com.google.gson.Gson;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
@@ -36,10 +38,12 @@ public class PublicWeiboActivity extends AppCompatActivity {
             @Override
             public void onResponse(Response response) throws IOException {
 
+//                Logger.getLogger().d(response.body().string() + "");
+
+                WeiboModel weiboModel = new Gson().fromJson(response.body().string(),WeiboModel.class);
+
+
                 Logger.getLogger().d(response.body().string() + "");
-
-
-
 
 
 

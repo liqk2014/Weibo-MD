@@ -7,4 +7,7 @@ public final class Constants  {
 
 
     public static String access_token;
+
+    public static boolean DEUBG =true;
+
 }

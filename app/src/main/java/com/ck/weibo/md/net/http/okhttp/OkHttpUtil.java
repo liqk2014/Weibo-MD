@@ -1,5 +1,7 @@
 package com.ck.weibo.md.net.http.okhttp;
 
+import com.ck.weibo.md.Constants;
+import com.facebook.stetho.okhttp.StethoInterceptor;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
@@ -16,9 +18,13 @@ public class OkHttpUtil {
     public static final int DEFAULT_TIME_OUT = 30;
 
 
+
+
     private static final OkHttpClient mOkHttpClient = new OkHttpClient();
     static{
         mOkHttpClient.setConnectTimeout(DEFAULT_TIME_OUT, TimeUnit.SECONDS);
+        if (Constants.DEUBG)
+        mOkHttpClient.networkInterceptors().add(new StethoInterceptor());
     }
     /**
      * 该不会开启异步线程。
@@ -27,6 +33,8 @@ public class OkHttpUtil {
      * @throws IOException
      */
     public static Response execute(Request request) throws IOException {
+
+
         return mOkHttpClient.newCall(request).execute();
     }
     /**

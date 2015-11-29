@@ -20,9 +20,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-
         logger = Logger.getLogger();
+
+
         logger.d(this+"");
 
 
@@ -31,16 +31,16 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
         logger.d(this+"");
 
+
     }
+
 
     @Override
     protected void onRestart() {
         super.onRestart();
         logger.d(this + "");
-
     }
 
     @Override
@@ -68,7 +68,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         logger.d(this+"");
-
 
 
     }

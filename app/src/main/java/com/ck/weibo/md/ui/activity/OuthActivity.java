@@ -70,6 +70,7 @@ public class OuthActivity extends BaseActivity {
                 super.onPageStarted(view, url, favicon);
 
 
+
             }
 
             @Override
@@ -101,7 +102,7 @@ public class OuthActivity extends BaseActivity {
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                Logger.getLogger().d(url + "");
+                Logger.getLogger().d(url + "123 ");
 
 
                 if (url.startsWith(WeiboApi.REDIRECT_URI)) {
@@ -146,7 +147,7 @@ public class OuthActivity extends BaseActivity {
                         public void onResponse(Response response) throws IOException {
 
 
-                            String accessTokenJson = response.body().string();
+                           String accessTokenJson = response.body().string();
 
                             Logger.getLogger().d(accessTokenJson + "");
 
