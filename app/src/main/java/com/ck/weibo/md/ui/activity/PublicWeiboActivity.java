@@ -11,13 +11,14 @@ import com.ck.weibo.md.net.api.WeiboApi;
 import com.ck.weibo.md.net.http.okhttp.OkHttpUtil;
 import com.ck.weibo.md.utils.Logger;
 import com.google.gson.Gson;
+import com.sk.android.lib.ui.BaseActivity;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
 import java.io.IOException;
 
-public class PublicWeiboActivity extends AppCompatActivity {
+public class PublicWeiboActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +52,21 @@ public class PublicWeiboActivity extends AppCompatActivity {
             }
         });
 
+
+    }
+
+    @Override
+    protected void initView() {
+
+    }
+
+    @Override
+    protected void initField() {
+
+    }
+
+    @Override
+    protected void loadData() {
 
     }
 
